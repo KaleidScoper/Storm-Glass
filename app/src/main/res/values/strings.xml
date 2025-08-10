@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">风暴瓶</string>
+    <string name="choose_identity">选择你的身份</string>
+    <string name="lemon">🍋 柠檬</string>
+    <string name="tomato">🍅 西红柿</string>
+    <string name="wuhan_hongshan">武汉洪山区</string>
+    <string name="hefei_shushan">合肥蜀山区</string>
+    <string name="weather_info">天气信息</string>
+    <string name="temperature">温度</string>
+    <string name="humidity">湿度</string>
+    <string name="wind_speed">风速</string>
+    <string name="description">天气描述</string>
+    <string name="current_time">当前时间</string>
+    <string name="loading">加载中...</string>
+    <string name="error_loading_weather">加载天气信息失败</string>
+    <string name="retry">重试</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#FF6B73FF</color>
+    <color name="primary_dark">#FF5A67D8</color>
+    <color name="accent">#FFFF6B6B</color>
+    <color name="bottle_glass">#FFE3F2FD</color>
+    <color name="bottle_border">#FF1976D2</color>
+    <color name="lemon_color">#FFFFEB3B</color>
+    <color name="tomato_color">#FFF44336</color>
+    <color name="weather_sunny">#FFFF9800</color>
+    <color name="weather_cloudy">#FF9E9E9E</color>
+    <color name="weather_rainy">#FF2196F3</color>
+    <color name="weather_snowy">#FFE1F5FE</color>
+</resources>
