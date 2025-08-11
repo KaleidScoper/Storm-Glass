@@ -1,45 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 基础颜色 -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="dark_gray">#FF1A1A1A</color>
-    <color name="medium_gray">#FF2D2D2D</color>
-    <color name="light_gray">#FF404040</color>
-    
-    <!-- 主题颜色 -->
-    <color name="primary">#FF2196F3</color>
-    <color name="primary_dark">#FF1976D2</color>
-    <color name="primary_light">#FF64B5F6</color>
-    <color name="accent">#FF03DAC5</color>
-    
-    <!-- 背景颜色 -->
-    <color name="background_primary">#FF121212</color>
-    <color name="background_secondary">#FF1E1E1E</color>
-    <color name="surface">#FF2D2D2D</color>
-    
-    <!-- 文字颜色 -->
-    <color name="text_primary">#FFFFFFFF</color>
-    <color name="text_secondary">#FFB3B3B3</color>
-    <color name="text_disabled">#FF666666</color>
-    
-    <!-- 风暴瓶颜色 -->
-    <color name="bottle_glass">#FF1A237E</color>
-    <color name="bottle_border">#FF3949AB</color>
-    <color name="bottle_highlight">#FF5C6BC0</color>
-    
-    <!-- 角色颜色 -->
-    <color name="lemon_color">#FFFFEB3B</color>
-    <color name="tomato_color">#FFF44336</color>
-    
-    <!-- 天气效果颜色 -->
-    <color name="weather_sunny">#FFFF9800</color>
-    <color name="weather_cloudy">#FF9E9E9E</color>
-    <color name="weather_rainy">#FF2196F3</color>
-    <color name="weather_snowy">#FFE1F5FE</color>
-    
-    <!-- 状态颜色 -->
-    <color name="success">#FF4CAF50</color>
-    <color name="error">#FFF44336</color>
-    <color name="warning">#FFFF9800</color>
+    <color name="blue_primary">#FF2196F3</color>
+    <color name="blue_dark">#FF1976D2</color>
+    <color name="blue_light">#FFBBDEFB</color>
+    <color name="gray_dark">#FF424242</color>
+    <color name="gray_medium">#FF757575</color>
+    <color name="gray_light">#FFBDBDBD</color>
+    <color name="transparent">#00000000</color>
 </resources>

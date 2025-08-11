@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <full-backup-content>
-    <!-- Exclude specific files or directories from backup -->
+    <!-- Exclude specific files or directories from backup.
+         For more information, see the topic for the <include> and <exclude> elements
+         at https://developer.android.com/guide/topics/data/autobackup -->
+    <exclude domain="sharedpref" path="."/>
 </full-backup-content>

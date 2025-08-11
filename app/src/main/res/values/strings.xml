@@ -1,17 +1,22 @@
 <resources>
     <string name="app_name">风暴瓶</string>
-    <string name="choose_identity">选择你的身份</string>
-    <string name="lemon">🍋 柠檬</string>
-    <string name="tomato">🍅 西红柿</string>
-    <string name="wuhan_hongshan">武汉洪山区</string>
-    <string name="hefei_shushan">合肥蜀山区</string>
+    <string name="select_identity">选择你的身份</string>
+    <string name="lemon">柠檬</string>
+    <string name="tomato">西红柿</string>
     <string name="weather_info">天气信息</string>
     <string name="temperature">温度</string>
     <string name="humidity">湿度</string>
     <string name="wind_speed">风速</string>
-    <string name="description">天气描述</string>
-    <string name="current_time">当前时间</string>
-    <string name="loading">加载中...</string>
-    <string name="error_loading_weather">加载天气信息失败</string>
-    <string name="retry">重试</string>
+    <string name="weather_description">天气描述</string>
+    <string name="test_weather">测试天气</string>
+    <string name="sunny">晴天</string>
+    <string name="rainy">雨天</string>
+    <string name="cloudy">阴天</string>
+    <string name="snowy">雪天</string>
+    <string name="expression">表情</string>
+    <string name="happy">开心</string>
+    <string name="sad">伤心</string>
+    <string name="calm">平静</string>
+    <string name="angry">愤怒</string>
+    <string name="confused">疑惑</string>
 </resources>
