@@ -6,7 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.stormglass.weatherbottle.api.WeatherApiService
-import com.stormglass.weatherbottle.data.WeatherType
+import com.stormglass.weatherbottle.data.WeatherType as DataWeatherType
+import com.stormglass.weatherbottle.data.toWeatherType // Added import
 import com.stormglass.weatherbottle.databinding.ActivityMainBinding
 import com.stormglass.weatherbottle.repository.WeatherRepository
 import com.stormglass.weatherbottle.views.StormBottleView
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     
     private fun setupWeatherApi() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.weatherapi.com/")
+            .baseUrl("https://devapi.qweather.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         
@@ -55,6 +56,45 @@ class MainActivity : AppCompatActivity() {
             userIdentity = StormBottleView.UserIdentity.TOMATO
             showStormBottle()
             loadHefeiWeather()
+        }
+        
+        // 信息栏展开/收起点击事件
+        binding.topInfoLayout.setOnClickListener {
+            toggleInfoExpansion()
+        }
+        
+        // 天气切换按钮点击事件
+        binding.btnSunny.setOnClickListener {
+            binding.stormBottleView.setWeatherType(StormBottleView.WeatherType.SUNNY)
+        }
+        
+        binding.btnCloudy.setOnClickListener {
+            binding.stormBottleView.setWeatherType(StormBottleView.WeatherType.CLOUDY)
+        }
+        
+        binding.btnRainy.setOnClickListener {
+            binding.stormBottleView.setWeatherType(StormBottleView.WeatherType.RAINY)
+        }
+    }
+    
+    private fun toggleInfoExpansion() {
+        val expandedInfo = binding.expandedInfo
+        val expandArrow = binding.ivExpandArrow
+        
+        if (expandedInfo.visibility == View.VISIBLE) {
+            // 收起信息
+            expandedInfo.visibility = View.GONE
+            expandArrow.animate()
+                .rotation(0f)
+                .setDuration(200)
+                .start()
+        } else {
+            // 展开信息
+            expandedInfo.visibility = View.VISIBLE
+            expandArrow.animate()
+                .rotation(180f)
+                .setDuration(200)
+                .start()
         }
     }
     
@@ -104,28 +144,29 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun updateWeatherUI(weatherResponse: com.stormglass.weatherbottle.data.WeatherResponse) {
-        val current = weatherResponse.current
-        val location = weatherResponse.location
+        val current = weatherResponse.now
+        val location = weatherResponse.location.firstOrNull()
         
         // 更新温度
-        binding.tvTemperature.text = "${current.temperatureCelsius.toInt()}°C"
+        binding.tvTemperature.text = "${current.temp}°C"
         
         // 更新湿度
         binding.tvHumidity.text = "${current.humidity}%"
         
         // 更新风速
-        binding.tvWindSpeed.text = "${String.format("%.1f", current.windSpeedKph)}m/s"
+        binding.tvWindSpeed.text = "${current.windSpeed}m/s"
         
         // 更新天气描述
-        binding.tvWeatherDescription.text = current.condition.text
+        binding.tvWeatherDescription.text = current.text
         
         // 更新风暴瓶的天气类型
-        val weatherType = when (current.condition.toWeatherType()) {
-            WeatherType.SUNNY -> StormBottleView.WeatherType.SUNNY
-            WeatherType.CLOUDY -> StormBottleView.WeatherType.CLOUDY
-            WeatherType.RAINY -> StormBottleView.WeatherType.RAINY
-            WeatherType.SNOWY -> StormBottleView.WeatherType.SNOWY
-            else -> StormBottleView.WeatherType.SUNNY
+        val weatherType = when (current.toWeatherType()) {
+            DataWeatherType.SUNNY -> StormBottleView.WeatherType.SUNNY
+            DataWeatherType.CLOUDY -> StormBottleView.WeatherType.CLOUDY
+            DataWeatherType.RAINY -> StormBottleView.WeatherType.RAINY
+            DataWeatherType.SNOWY -> StormBottleView.WeatherType.SNOWY
+            DataWeatherType.UNKNOWN -> StormBottleView.WeatherType.SUNNY
+            else -> StormBottleView.WeatherType.SUNNY 
         }
         binding.stormBottleView.setWeatherType(weatherType)
         

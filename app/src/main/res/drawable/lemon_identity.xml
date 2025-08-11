@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- 柠檬主体 -->
+    <path
+        android:fillColor="#FFFFEB3B"
+        android:pathData="M60,20 Q80,20 80,40 L80,80 Q80,100 60,100 Q40,100 40,80 L40,40 Q40,20 60,20 Z" />
+    
+    <!-- 叶子 -->
+    <path
+        android:fillColor="#FF4CAF50"
+        android:pathData="M60,20 Q70,15 75,20 Q70,25 60,20 Z" />
+    
+    <!-- 表情 - 眼睛 -->
+    <circle
+        android:cx="50"
+        android:cy="60"
+        android:r="4"
+        android:fillColor="#FF000000" />
+    
+    <circle
+        android:cx="70"
+        android:cy="60"
+        android:r="4"
+        android:fillColor="#FF000000" />
+    
+    <!-- 表情 - 嘴巴 -->
+    <path
+        android:strokeColor="#FF000000"
+        android:strokeWidth="2"
+        android:pathData="M50,75 Q60,80 70,75" />
+</vector>

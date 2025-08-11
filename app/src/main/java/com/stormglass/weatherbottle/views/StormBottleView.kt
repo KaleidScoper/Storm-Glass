@@ -6,6 +6,9 @@ import android.util.AttributeSet
 import android.view.View
 import android.animation.ValueAnimator
 import android.view.animation.LinearInterpolator
+import android.graphics.drawable.Drawable
+import androidx.core.content.ContextCompat
+import com.stormglass.weatherbottle.R
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.min
@@ -28,6 +31,17 @@ class StormBottleView @JvmOverloads constructor(
     private var bottleRect = RectF()
     private var characterRect = RectF()
     
+    // 图片资源
+    private var lemonBodyDrawable: Drawable? = null
+    private var tomatoBodyDrawable: Drawable? = null
+    private var fruitLegDrawable: Drawable? = null
+    private var fruitExpressionDrawable: Drawable? = null
+    private var weatherBottleSunnyDrawable: Drawable? = null
+    private var weatherBottleCloudyDrawable: Drawable? = null
+    private var weatherBottleRainyDrawable: Drawable? = null
+    private var lemonInBottleDrawable: Drawable? = null
+    private var tomatoInBottleDrawable: Drawable? = null
+    
     private val weatherAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
         duration = 3000
         repeatCount = ValueAnimator.INFINITE
@@ -48,7 +62,25 @@ class StormBottleView @JvmOverloads constructor(
     }
     
     init {
+        loadDrawables()
         startWeatherAnimation()
+    }
+    
+    private fun loadDrawables() {
+        try {
+            // 加载图片资源
+            lemonBodyDrawable = ContextCompat.getDrawable(context, R.drawable.lemon_body)
+            tomatoBodyDrawable = ContextCompat.getDrawable(context, R.drawable.tomato_body)
+            fruitLegDrawable = ContextCompat.getDrawable(context, R.drawable.fruit_leg)
+            fruitExpressionDrawable = ContextCompat.getDrawable(context, R.drawable.fruit_expression)
+            weatherBottleSunnyDrawable = ContextCompat.getDrawable(context, R.drawable.weather_bottle_sunny)
+            weatherBottleCloudyDrawable = ContextCompat.getDrawable(context, R.drawable.weather_bottle_cloudy)
+            weatherBottleRainyDrawable = ContextCompat.getDrawable(context, R.drawable.weather_bottle_rainy)
+            lemonInBottleDrawable = ContextCompat.getDrawable(context, R.drawable.lemon_in_bottle)
+            tomatoInBottleDrawable = ContextCompat.getDrawable(context, R.drawable.tomato_in_bottle)
+        } catch (e: Exception) {
+            // 如果图片资源不存在，使用程序绘制作为后备方案
+        }
     }
     
     fun setUserIdentity(identity: UserIdentity) {
@@ -72,14 +104,185 @@ class StormBottleView @JvmOverloads constructor(
         val centerY = height / 2f
         val bottleSize = min(width, height) * 0.6f
         
-        // 绘制风暴瓶
-        drawStormBottle(canvas, centerX, centerY, bottleSize)
+        // 按照分层顺序绘制
+        // 第1层：瓶外水果的右侧腿
+        drawRightLeg(canvas, centerX, centerY, bottleSize)
         
-        // 绘制卡通角色
+        // 第2层：瓶外水果身体
         drawCharacter(canvas, centerX, centerY, bottleSize)
         
-        // 绘制天气效果
+        // 第3层：天气瓶下层（包含瓶底、草地/雪地、瓶子外形）
+        drawWeatherBottleLower(canvas, centerX, centerY, bottleSize)
+        
+        // 第4层：瓶内水果
+        drawInnerFruit(canvas, centerX, centerY, bottleSize)
+        
+        // 第5层：天气瓶上层（高光和天气效果）
+        drawWeatherBottleUpper(canvas, centerX, centerY, bottleSize)
+        
+        // 第6层：瓶外水果的左侧腿
+        drawLeftLeg(canvas, centerX, centerY, bottleSize)
+        
+        // 表情动画（围绕脸部移动）
+        drawExpression(canvas, centerX, centerY, bottleSize)
+    }
+    
+    private fun drawRightLeg(canvas: Canvas, centerX: Float, centerY: Float, bottleSize: Float) {
+        val characterSize = bottleSize * 0.8f
+        val characterX = centerX + bottleSize * 0.6f
+        val characterY = centerY
+        
+        if (fruitLegDrawable != null) {
+            // 绘制右侧腿（被瓶子遮盖）
+            val legRect = RectF(
+                characterX + characterSize * 0.3f,
+                characterY + characterSize * 0.4f,
+                characterX + characterSize * 0.7f,
+                characterY + characterSize * 0.8f
+            )
+            fruitLegDrawable?.bounds = legRect.toRect()
+            fruitLegDrawable?.draw(canvas)
+        }
+    }
+    
+    private fun drawCharacter(canvas: Canvas, centerX: Float, centerY: Float, bottleSize: Float) {
+        val characterSize = bottleSize * 0.8f
+        val characterX = centerX + bottleSize * 0.6f
+        val characterY = centerY
+        
+        characterRect.set(
+            characterX - characterSize / 2,
+            characterY - characterSize / 2,
+            characterX + characterSize / 2,
+            characterY + characterSize / 2
+        )
+        
+        when (userIdentity) {
+            UserIdentity.LEMON -> {
+                if (lemonBodyDrawable != null) {
+                    lemonBodyDrawable?.bounds = characterRect.toRect()
+                    lemonBodyDrawable?.draw(canvas)
+                } else {
+                    drawLemonCharacter(canvas, characterX, characterY, characterSize)
+                }
+            }
+            UserIdentity.TOMATO -> {
+                if (tomatoBodyDrawable != null) {
+                    tomatoBodyDrawable?.bounds = characterRect.toRect()
+                    tomatoBodyDrawable?.draw(canvas)
+                } else {
+                    drawTomatoCharacter(canvas, characterX, characterY, characterSize)
+                }
+            }
+        }
+    }
+    
+    private fun drawWeatherBottleLower(canvas: Canvas, centerX: Float, centerY: Float, bottleSize: Float) {
+        bottleRect.set(
+            centerX - bottleSize / 2,
+            centerY - bottleSize / 2,
+            centerX + bottleSize / 2,
+            centerY + bottleSize / 2
+        )
+        
+        // 根据天气类型选择对应的瓶子下层图片
+        val bottleDrawable = when (weatherType) {
+            WeatherType.SUNNY -> weatherBottleSunnyDrawable
+            WeatherType.CLOUDY -> weatherBottleCloudyDrawable
+            WeatherType.RAINY -> weatherBottleRainyDrawable
+            WeatherType.SNOWY -> weatherBottleSunnyDrawable // 暂时用晴天版本
+        }
+        
+        if (bottleDrawable != null) {
+            bottleDrawable.bounds = bottleRect.toRect()
+            bottleDrawable.draw(canvas)
+        } else {
+            // 后备方案：程序绘制瓶子
+            drawStormBottle(canvas, centerX, centerY, bottleSize)
+        }
+    }
+    
+    private fun drawInnerFruit(canvas: Canvas, centerX: Float, centerY: Float, bottleSize: Float) {
+        val innerSize = bottleSize * 0.4f
+        val innerX = centerX
+        val innerY = centerY + bottleSize * 0.1f // 稍微向下，站在瓶底
+        
+        val innerFruitDrawable = when (userIdentity) {
+            UserIdentity.LEMON -> tomatoInBottleDrawable
+            UserIdentity.TOMATO -> lemonInBottleDrawable
+        }
+        
+        if (innerFruitDrawable != null) {
+            val fruitRect = RectF(
+                innerX - innerSize / 2,
+                innerY - innerSize / 2,
+                innerX + innerSize / 2,
+                innerY + innerSize / 2
+            )
+            innerFruitDrawable.bounds = fruitRect.toRect()
+            innerFruitDrawable.draw(canvas)
+        } else {
+            // 后备方案：程序绘制
+            when (userIdentity) {
+                UserIdentity.LEMON -> drawTomato(canvas, innerX, innerY, innerSize)
+                UserIdentity.TOMATO -> drawLemon(canvas, innerX, innerY, innerSize)
+            }
+        }
+    }
+    
+    private fun drawWeatherBottleUpper(canvas: Canvas, centerX: Float, centerY: Float, bottleSize: Float) {
+        // 天气瓶上层：只包含高光和天气效果，不包含瓶底
+        val upperRect = RectF(
+            centerX - bottleSize / 2,
+            centerY - bottleSize / 2,
+            centerX + bottleSize / 2,
+            centerY + bottleSize / 2
+        )
+        
+        // 这里应该加载专门的天气效果上层图片
+        // 暂时使用程序绘制的天气效果
         drawWeatherEffects(canvas, centerX, centerY, bottleSize)
+    }
+    
+    private fun drawLeftLeg(canvas: Canvas, centerX: Float, centerY: Float, bottleSize: Float) {
+        val characterSize = bottleSize * 0.8f
+        val characterX = centerX + bottleSize * 0.6f
+        val characterY = centerY
+        
+        if (fruitLegDrawable != null) {
+            // 绘制左侧腿（在瓶子上层）
+            val legRect = RectF(
+                characterX - characterSize * 0.7f,
+                characterY + characterSize * 0.4f,
+                characterX - characterSize * 0.3f,
+                characterY + characterSize * 0.8f
+            )
+            fruitLegDrawable?.bounds = legRect.toRect()
+            fruitLegDrawable?.draw(canvas)
+        }
+    }
+    
+    private fun drawExpression(canvas: Canvas, centerX: Float, centerY: Float, bottleSize: Float) {
+        val characterSize = bottleSize * 0.8f
+        val characterX = centerX + bottleSize * 0.6f
+        val characterY = centerY
+        
+        if (fruitExpressionDrawable != null) {
+            // 表情围绕脸部缓慢移动，模拟注视效果
+            val expressionSize = characterSize * 0.3f
+            val moveRadius = characterSize * 0.1f
+            val moveX = characterX + cos(animationProgress * 2 * Math.PI).toFloat() * moveRadius
+            val moveY = characterY - characterSize * 0.2f + sin(animationProgress * 2 * Math.PI).toFloat() * moveRadius
+            
+            val expressionRect = RectF(
+                moveX - expressionSize / 2,
+                moveY - expressionSize / 2,
+                moveX + expressionSize / 2,
+                moveY + expressionSize / 2
+            )
+            fruitExpressionDrawable?.bounds = expressionRect.toRect()
+            fruitExpressionDrawable?.draw(canvas)
+        }
     }
     
     private fun drawStormBottle(canvas: Canvas, centerX: Float, centerY: Float, size: Float) {
@@ -94,7 +297,7 @@ class StormBottleView @JvmOverloads constructor(
         // 瓶子外框
         bottlePaint.style = Paint.Style.STROKE
         bottlePaint.strokeWidth = 8f
-        bottlePaint.color = Color.parseColor("#1976D2")
+        bottlePaint.color = context.getColor(R.color.bottle_border)
         canvas.drawRoundRect(bottleRect, 20f, 20f, bottlePaint)
         
         // 瓶子玻璃效果
@@ -116,28 +319,6 @@ class StormBottleView @JvmOverloads constructor(
             UserIdentity.TOMATO -> {
                 // 显示柠檬
                 drawLemon(canvas, innerX, innerY, innerSize)
-            }
-        }
-    }
-    
-    private fun drawCharacter(canvas: Canvas, centerX: Float, centerY: Float, bottleSize: Float) {
-        val characterSize = bottleSize * 0.8f
-        val characterX = centerX + bottleSize * 0.6f
-        val characterY = centerY
-        
-        characterRect.set(
-            characterX - characterSize / 2,
-            characterY - characterSize / 2,
-            characterX + characterSize / 2,
-            characterY + characterSize / 2
-        )
-        
-        when (userIdentity) {
-            UserIdentity.LEMON -> {
-                drawLemonCharacter(canvas, characterX, characterY, characterSize)
-            }
-            UserIdentity.TOMATO -> {
-                drawTomatoCharacter(canvas, characterX, characterY, characterSize)
             }
         }
     }

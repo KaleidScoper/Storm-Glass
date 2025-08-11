@@ -10,17 +10,19 @@
 ### 详细步骤
 
 #### 步骤1: 获取天气API密钥
-1. 访问 [WeatherAPI.com](https://www.weatherapi.com/)
-2. 点击"Get Started for Free"
-3. 填写注册信息（邮箱、密码等）
-4. 登录后，在Dashboard中找到你的API密钥
+1. 访问 [和风天气开发平台](https://dev.qweather.com/)
+2. 点击"注册"并填写相关信息
+3. 验证邮箱并完成注册
+4. 登录后创建应用，获取API密钥
 5. 复制API密钥（格式类似：`1234567890abcdef1234567890abcdef`）
 
 #### 步骤2: 配置项目
 1. 在Android Studio中打开项目
 2. 找到文件：`app/src/main/java/com/stormglass/weatherbottle/repository/WeatherRepository.kt`
-3. 将第18行的`YOUR_WEATHER_API_KEY`替换为你刚才获取的API密钥
+3. 将第18行的`YOUR_QWEATHER_API_KEY`替换为你刚才获取的API密钥
 4. 保存文件
+
+**优势**: 和风天气API在中国大陆访问更稳定，特别适合OPPO、vivo、华为、小米等国产手机。
 
 #### 步骤3: 连接Android设备
 1. 在Android设备上启用"开发者选项"
