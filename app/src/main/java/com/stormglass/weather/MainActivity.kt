@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setupIdentitySelection()
         setupStormBottle()
         setupWeatherButtons()
+        setupSeasonButtons()
         setupExpressionButtons()
         
         // 开始表情动画
@@ -63,10 +64,6 @@ class MainActivity : AppCompatActivity() {
             binding.bigFruitLeftLeg.setImageResource(R.drawable.fruit_leg)
             binding.bigFruitLeftArm.setImageResource(R.drawable.fruit_arm)
             binding.bigFruitExpression.setImageResource(R.drawable.lemon_expression_happy)
-            
-            // 设置左臂和左腿的水平翻转
-            binding.bigFruitLeftArm.scaleX = -1f
-            binding.bigFruitLeftLeg.scaleX = -1f
         } else {
             // 西红柿身份：瓶子里显示柠檬
             binding.bigFruitBody.setImageResource(R.drawable.tomato_body)
@@ -75,10 +72,6 @@ class MainActivity : AppCompatActivity() {
             binding.bigFruitLeftLeg.setImageResource(R.drawable.fruit_leg)
             binding.bigFruitLeftArm.setImageResource(R.drawable.fruit_arm)
             binding.bigFruitExpression.setImageResource(R.drawable.tomato_expression_happy)
-            
-            // 设置左臂和左腿的水平翻转
-            binding.bigFruitLeftArm.scaleX = -1f
-            binding.bigFruitLeftLeg.scaleX = -1f
         }
     }
 
@@ -169,6 +162,36 @@ class MainActivity : AppCompatActivity() {
         binding.btnSnowy.setOnClickListener {
             updateWeatherUI("snowy")
         }
+    }
+
+    private fun setupSeasonButtons() {
+        binding.btnSpring.setOnClickListener {
+            updateSeasonUI("spring")
+        }
+        
+        binding.btnSummer.setOnClickListener {
+            updateSeasonUI("summer")
+        }
+        
+        binding.btnAutumn.setOnClickListener {
+            updateSeasonUI("autumn")
+        }
+        
+        binding.btnWinter.setOnClickListener {
+            updateSeasonUI("winter")
+        }
+    }
+
+    private fun updateSeasonUI(season: String) {
+        // 更新瓶底（季节）
+        val bottleBottomRes = when (season) {
+            "spring" -> R.drawable.bottle_bottom_spring
+            "summer" -> R.drawable.bottle_bottom_summer
+            "autumn" -> R.drawable.bottle_bottom_autumn
+            "winter" -> R.drawable.bottle_bottom_winter
+            else -> R.drawable.bottle_bottom_spring
+        }
+        binding.bottleBottom.setImageResource(bottleBottomRes)
     }
 
     private fun setupExpressionButtons() {

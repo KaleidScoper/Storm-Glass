@@ -13,6 +13,11 @@
     <string name="rainy">雨天</string>
     <string name="cloudy">阴天</string>
     <string name="snowy">雪天</string>
+    <string name="test_season">测试季节</string>
+    <string name="spring">春季</string>
+    <string name="summer">夏季</string>
+    <string name="autumn">秋季</string>
+    <string name="winter">冬季</string>
     <string name="expression">表情</string>
     <string name="happy">开心</string>
     <string name="sad">伤心</string>
