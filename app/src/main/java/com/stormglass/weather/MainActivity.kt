@@ -59,23 +59,25 @@ class MainActivity : AppCompatActivity() {
         if (currentIdentity == "lemon") {
             // 柠檬身份：瓶子里显示西红柿
             binding.bigFruitBody.setImageResource(R.drawable.lemon_body)
-            binding.bigFruitRightLeg.setImageResource(R.drawable.fruit_leg)
-            binding.bigFruitRightArm.setImageResource(R.drawable.fruit_arm)
-            binding.bigFruitLeftLeg.setImageResource(R.drawable.fruit_leg)
-            binding.bigFruitLeftArm.setImageResource(R.drawable.fruit_arm)
             binding.bigFruitExpression.setImageResource(R.drawable.lemon_expression_happy)
+            // 立即更新小水果为西红柿（柠檬身份看西红柿）
+            binding.smallFruit.setImageResource(R.drawable.small_tomato_sunny)
         } else {
             // 西红柿身份：瓶子里显示柠檬
             binding.bigFruitBody.setImageResource(R.drawable.tomato_body)
-            binding.bigFruitRightLeg.setImageResource(R.drawable.fruit_leg)
-            binding.bigFruitRightArm.setImageResource(R.drawable.fruit_arm)
-            binding.bigFruitLeftLeg.setImageResource(R.drawable.fruit_leg)
-            binding.bigFruitLeftArm.setImageResource(R.drawable.fruit_arm)
             binding.bigFruitExpression.setImageResource(R.drawable.tomato_expression_happy)
+            // 立即更新小水果为柠檬（西红柿身份看柠檬）
+            binding.smallFruit.setImageResource(R.drawable.small_lemon_sunny)
         }
+        
+        // 确保小水果立即显示正确，不等待天气数据加载
+        // 天气数据加载完成后，updateWeatherUI会再次更新小水果以反映天气变化
     }
 
     private fun setupStormBottle() {
+        // 设置折叠/展开功能栏的点击事件
+        setupCollapsibleToolbar()
+        
         // 观察天气数据变化
         viewModel.weatherData.observe(this) { weather ->
             weather?.let {
@@ -88,6 +90,24 @@ class MainActivity : AppCompatActivity() {
                 
                 // 根据天气更新瓶子和小水果
                 updateWeatherUI(it.weatherType)
+            }
+        }
+    }
+
+    private fun setupCollapsibleToolbar() {
+        var isExpanded = false
+        
+        binding.collapsedToolbar.setOnClickListener {
+            if (isExpanded) {
+                // 收起功能栏
+                binding.expandedToolbar.visibility = View.GONE
+                binding.collapsedToolbar.visibility = View.VISIBLE
+                isExpanded = false
+            } else {
+                // 展开功能栏
+                binding.expandedToolbar.visibility = View.VISIBLE
+                binding.collapsedToolbar.visibility = View.GONE
+                isExpanded = true
             }
         }
     }

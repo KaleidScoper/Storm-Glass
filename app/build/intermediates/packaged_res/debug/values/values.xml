@@ -7,6 +7,7 @@
     <color name="gray_dark">#FF424242</color>
     <color name="gray_light">#FFBDBDBD</color>
     <color name="gray_medium">#FF757575</color>
+    <color name="semi_transparent_toolbar_bg">#A0E0E0E0</color>
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFFFF</color>
     <string name="angry">愤怒</string>

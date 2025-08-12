@@ -2090,6 +2090,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color semi_transparent_toolbar_bg
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
@@ -2977,6 +2978,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable bg_storm_sky
 drawable bottle_bottom_autumn
 drawable bottle_bottom_spring
 drawable bottle_bottom_summer
@@ -3210,10 +3212,6 @@ id beginning
 id bestChoice
 id big_fruit_body
 id big_fruit_expression
-id big_fruit_left_arm
-id big_fruit_left_leg
-id big_fruit_right_arm
-id big_fruit_right_leg
 id blocking
 id bottle
 id bottle_bottom
@@ -3260,6 +3258,7 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
+id collapsed_toolbar
 id compress
 id confirm_button
 id constraint
@@ -3321,6 +3320,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id expanded_toolbar
 id fade
 id fill
 id fill_horizontal

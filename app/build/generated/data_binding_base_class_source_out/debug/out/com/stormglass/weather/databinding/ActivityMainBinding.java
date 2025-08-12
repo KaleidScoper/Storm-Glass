@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,25 +30,13 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ImageView bigFruitExpression;
 
   @NonNull
-  public final ImageView bigFruitLeftArm;
-
-  @NonNull
-  public final ImageView bigFruitLeftLeg;
-
-  @NonNull
-  public final ImageView bigFruitRightArm;
-
-  @NonNull
-  public final ImageView bigFruitRightLeg;
-
-  @NonNull
   public final ImageView bottle;
 
   @NonNull
   public final ImageView bottleBottom;
 
   @NonNull
-  public final FrameLayout bottleContainer;
+  public final ConstraintLayout bottleContainer;
 
   @NonNull
   public final LinearLayout bottomToolbar;
@@ -94,6 +81,12 @@ public final class ActivityMainBinding implements ViewBinding {
   public final Button btnWinter;
 
   @NonNull
+  public final LinearLayout collapsedToolbar;
+
+  @NonNull
+  public final LinearLayout expandedToolbar;
+
+  @NonNull
   public final LinearLayout identitySelectionLayout;
 
   @NonNull
@@ -118,26 +111,21 @@ public final class ActivityMainBinding implements ViewBinding {
   public final TextView weatherInfoText;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView bigFruitBody,
-      @NonNull ImageView bigFruitExpression, @NonNull ImageView bigFruitLeftArm,
-      @NonNull ImageView bigFruitLeftLeg, @NonNull ImageView bigFruitRightArm,
-      @NonNull ImageView bigFruitRightLeg, @NonNull ImageView bottle,
-      @NonNull ImageView bottleBottom, @NonNull FrameLayout bottleContainer,
+      @NonNull ImageView bigFruitExpression, @NonNull ImageView bottle,
+      @NonNull ImageView bottleBottom, @NonNull ConstraintLayout bottleContainer,
       @NonNull LinearLayout bottomToolbar, @NonNull Button btnAngry, @NonNull Button btnAutumn,
       @NonNull Button btnCalm, @NonNull Button btnCloudy, @NonNull Button btnConfused,
       @NonNull Button btnHappy, @NonNull Button btnRainy, @NonNull Button btnSad,
       @NonNull Button btnSnowy, @NonNull Button btnSpring, @NonNull Button btnSummer,
-      @NonNull Button btnSunny, @NonNull Button btnWinter,
-      @NonNull LinearLayout identitySelectionLayout, @NonNull LinearLayout lemonButton,
-      @NonNull ImageView smallFruit, @NonNull ConstraintLayout stormBottleLayout,
-      @NonNull LinearLayout tomatoButton, @NonNull MaterialCardView topToolbar,
-      @NonNull TextView weatherDetails, @NonNull TextView weatherInfoText) {
+      @NonNull Button btnSunny, @NonNull Button btnWinter, @NonNull LinearLayout collapsedToolbar,
+      @NonNull LinearLayout expandedToolbar, @NonNull LinearLayout identitySelectionLayout,
+      @NonNull LinearLayout lemonButton, @NonNull ImageView smallFruit,
+      @NonNull ConstraintLayout stormBottleLayout, @NonNull LinearLayout tomatoButton,
+      @NonNull MaterialCardView topToolbar, @NonNull TextView weatherDetails,
+      @NonNull TextView weatherInfoText) {
     this.rootView = rootView;
     this.bigFruitBody = bigFruitBody;
     this.bigFruitExpression = bigFruitExpression;
-    this.bigFruitLeftArm = bigFruitLeftArm;
-    this.bigFruitLeftLeg = bigFruitLeftLeg;
-    this.bigFruitRightArm = bigFruitRightArm;
-    this.bigFruitRightLeg = bigFruitRightLeg;
     this.bottle = bottle;
     this.bottleBottom = bottleBottom;
     this.bottleContainer = bottleContainer;
@@ -155,6 +143,8 @@ public final class ActivityMainBinding implements ViewBinding {
     this.btnSummer = btnSummer;
     this.btnSunny = btnSunny;
     this.btnWinter = btnWinter;
+    this.collapsedToolbar = collapsedToolbar;
+    this.expandedToolbar = expandedToolbar;
     this.identitySelectionLayout = identitySelectionLayout;
     this.lemonButton = lemonButton;
     this.smallFruit = smallFruit;
@@ -204,30 +194,6 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.big_fruit_left_arm;
-      ImageView bigFruitLeftArm = ViewBindings.findChildViewById(rootView, id);
-      if (bigFruitLeftArm == null) {
-        break missingId;
-      }
-
-      id = R.id.big_fruit_left_leg;
-      ImageView bigFruitLeftLeg = ViewBindings.findChildViewById(rootView, id);
-      if (bigFruitLeftLeg == null) {
-        break missingId;
-      }
-
-      id = R.id.big_fruit_right_arm;
-      ImageView bigFruitRightArm = ViewBindings.findChildViewById(rootView, id);
-      if (bigFruitRightArm == null) {
-        break missingId;
-      }
-
-      id = R.id.big_fruit_right_leg;
-      ImageView bigFruitRightLeg = ViewBindings.findChildViewById(rootView, id);
-      if (bigFruitRightLeg == null) {
-        break missingId;
-      }
-
       id = R.id.bottle;
       ImageView bottle = ViewBindings.findChildViewById(rootView, id);
       if (bottle == null) {
@@ -241,7 +207,7 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       id = R.id.bottle_container;
-      FrameLayout bottleContainer = ViewBindings.findChildViewById(rootView, id);
+      ConstraintLayout bottleContainer = ViewBindings.findChildViewById(rootView, id);
       if (bottleContainer == null) {
         break missingId;
       }
@@ -330,6 +296,18 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.collapsed_toolbar;
+      LinearLayout collapsedToolbar = ViewBindings.findChildViewById(rootView, id);
+      if (collapsedToolbar == null) {
+        break missingId;
+      }
+
+      id = R.id.expanded_toolbar;
+      LinearLayout expandedToolbar = ViewBindings.findChildViewById(rootView, id);
+      if (expandedToolbar == null) {
+        break missingId;
+      }
+
       id = R.id.identity_selection_layout;
       LinearLayout identitySelectionLayout = ViewBindings.findChildViewById(rootView, id);
       if (identitySelectionLayout == null) {
@@ -379,11 +357,11 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, bigFruitBody, bigFruitExpression,
-          bigFruitLeftArm, bigFruitLeftLeg, bigFruitRightArm, bigFruitRightLeg, bottle,
-          bottleBottom, bottleContainer, bottomToolbar, btnAngry, btnAutumn, btnCalm, btnCloudy,
-          btnConfused, btnHappy, btnRainy, btnSad, btnSnowy, btnSpring, btnSummer, btnSunny,
-          btnWinter, identitySelectionLayout, lemonButton, smallFruit, stormBottleLayout,
-          tomatoButton, topToolbar, weatherDetails, weatherInfoText);
+          bottle, bottleBottom, bottleContainer, bottomToolbar, btnAngry, btnAutumn, btnCalm,
+          btnCloudy, btnConfused, btnHappy, btnRainy, btnSad, btnSnowy, btnSpring, btnSummer,
+          btnSunny, btnWinter, collapsedToolbar, expandedToolbar, identitySelectionLayout,
+          lemonButton, smallFruit, stormBottleLayout, tomatoButton, topToolbar, weatherDetails,
+          weatherInfoText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
