@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:2:1-29:12
-INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:2:1-29:12
-INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:2:1-29:12
-INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:2:1-29:12
+ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:2:1-30:12
 MERGED from [androidx.databinding:viewbinding:8.2.0] C:\Users\kalei\.gradle\caches\transforms-3\0ac49f6341771b75f0a928230b32f190\transformed\jetified-viewbinding-8.2.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\kalei\.gradle\caches\transforms-3\eaf6cb842bf96a5d1b11db61b47f74be\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\kalei\.gradle\caches\transforms-3\8177fc0ae5949b09fa6ab8b305676505\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
@@ -71,8 +71,8 @@ ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:6
 	android:name
 		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:6:22-76
 application
-ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:8:5-27:19
-INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:8:5-27:19
+ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:8:5-28:19
+INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:8:5-28:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\kalei\.gradle\caches\transforms-3\eaf6cb842bf96a5d1b11db61b47f74be\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\kalei\.gradle\caches\transforms-3\eaf6cb842bf96a5d1b11db61b47f74be\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\kalei\.gradle\caches\transforms-3\8177fc0ae5949b09fa6ab8b305676505\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -102,33 +102,35 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ka
 	android:roundIcon
 		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:14:9-54
 	tools:targetApi
-		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:17:9-29
+		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:18:9-29
 	android:icon
 		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:12:9-43
 	android:allowBackup
 		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:9:9-35
 	android:theme
 		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:16:9-48
+	android:networkSecurityConfig
+		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:17:9-69
 	android:dataExtractionRules
 		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:10:9-65
 activity#com.stormglass.weather.MainActivity
-ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:18:9-26:20
+ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:19:9-27:20
 	android:exported
-		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:20:13-36
+		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:21:13-36
 	android:theme
-		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:21:13-52
+		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:22:13-52
 	android:name
-		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:19:13-41
+		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:20:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:22:13-25:29
+ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:23:13-26:29
 action#android.intent.action.MAIN
-ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:23:17-69
+ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:23:25-66
+		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:24:17-77
+ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:24:27-74
+		ADDED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml:25:27-74
 uses-sdk
 INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\PayLoad\Tech\Github\Storm-Glass\app\src\main\AndroidManifest.xml

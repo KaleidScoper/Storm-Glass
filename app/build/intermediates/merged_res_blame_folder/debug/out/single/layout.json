@@ -1,9 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-mergeDebugResources-34:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\layout\\activity_main.xml"
-    },
-    {
         "merged": "com.stormglass.weather.app-mergeDebugResources-34:/layout/activity_main.xml",
         "source": "com.stormglass.weather.app-main-37:/layout/activity_main.xml"
     }

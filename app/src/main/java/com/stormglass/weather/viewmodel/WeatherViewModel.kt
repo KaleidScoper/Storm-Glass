@@ -16,8 +16,8 @@ import android.util.Log
 
 class WeatherViewModel : ViewModel() {
     
-    private val _weatherData = MutableLiveData<WeatherData>()
-    val weatherData: LiveData<WeatherData> = _weatherData
+    private val _weatherData = MutableLiveData<WeatherData?>()
+    val weatherData: LiveData<WeatherData?> = _weatherData
     
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -48,6 +48,8 @@ class WeatherViewModel : ViewModel() {
     }
     
     fun fetchWeather(cityName: String) {
+        Log.d("WeatherViewModel", "Release版本测试 - 开始获取天气数据，城市: $cityName")
+        
         // 检查API密钥是否有效
         if (API_KEY == "YOUR_OPENWEATHER_API_KEY_HERE" || API_KEY.isEmpty()) {
             Log.d("WeatherViewModel", "API密钥未配置，使用模拟数据")
@@ -85,12 +87,13 @@ class WeatherViewModel : ViewModel() {
                 }
                 
                 if (response?.cod == 200) {
+                    Log.d("WeatherViewModel", "Release版本测试 - API响应成功: ${response.toString()}")
                     val weatherData = WeatherData.fromOpenWeatherResponse(response)
                     if (weatherData != null) {
                         _weatherData.postValue(weatherData)
-                        Log.d("WeatherViewModel", "天气数据获取成功: $weatherData")
+                        Log.d("WeatherViewModel", "Release版本测试 - 天气数据获取成功: $weatherData")
                     } else {
-                        Log.e("WeatherViewModel", "无法解析天气数据")
+                        Log.e("WeatherViewModel", "Release版本测试 - 无法解析天气数据")
                         _errorMessage.postValue("数据解析失败")
                         useSimulatedWeatherData(cityName)
                     }

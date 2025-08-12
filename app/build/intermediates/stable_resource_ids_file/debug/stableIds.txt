@@ -2009,6 +2009,7 @@ com.stormglass.weather:dimen/m3_searchbar_text_margin_start_no_navigation_icon =
 com.stormglass.weather:dimen/mtrl_textinput_box_stroke_width_default = 0x7f0602f8
 com.stormglass.weather:color/mtrl_chip_surface_color = 0x7f0502c8
 com.stormglass.weather:dimen/m3_searchbar_padding_start = 0x7f0601d8
+com.stormglass.weather:xml/network_security_config = 0x7f120002
 com.stormglass.weather:id/mtrl_picker_header_toggle = 0x7f08013e
 com.stormglass.weather:dimen/m3_searchbar_margin_vertical = 0x7f0601d6
 com.stormglass.weather:integer/mtrl_card_anim_delay_ms = 0x7f090033
