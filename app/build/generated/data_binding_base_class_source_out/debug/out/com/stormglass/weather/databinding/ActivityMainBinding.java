@@ -24,6 +24,9 @@ public final class ActivityMainBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final TextView backgroundWeatherInfo;
+
+  @NonNull
   public final ImageView bigFruitBody;
 
   @NonNull
@@ -43,6 +46,18 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @NonNull
   public final Button btnAutumn;
+
+  @NonNull
+  public final Button btnBgCloudy;
+
+  @NonNull
+  public final Button btnBgRainy;
+
+  @NonNull
+  public final Button btnBgSnowy;
+
+  @NonNull
+  public final Button btnBgSunny;
 
   @NonNull
   public final Button btnCalm;
@@ -110,20 +125,23 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final TextView weatherDetails;
 
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView bigFruitBody,
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
+      @NonNull TextView backgroundWeatherInfo, @NonNull ImageView bigFruitBody,
       @NonNull ImageView bigFruitExpression, @NonNull ImageView bottle,
       @NonNull ImageView bottleBottom, @NonNull ConstraintLayout bottleContainer,
-      @NonNull Button btnAngry, @NonNull Button btnAutumn, @NonNull Button btnCalm,
-      @NonNull Button btnCloudy, @NonNull Button btnConfused, @NonNull Button btnHappy,
-      @NonNull Button btnRainy, @NonNull Button btnResetWeather, @NonNull Button btnSad,
-      @NonNull Button btnSnowy, @NonNull Button btnSpring, @NonNull Button btnSummer,
-      @NonNull Button btnSunny, @NonNull Button btnWinter, @NonNull ImageView closeButton,
-      @NonNull LinearLayout collapsedToolbar, @NonNull LinearLayout expandedToolbar,
-      @NonNull LinearLayout identitySelectionLayout, @NonNull LinearLayout lemonButton,
-      @NonNull ImageView smallFruit, @NonNull ConstraintLayout stormBottleLayout,
-      @NonNull LinearLayout tomatoButton, @NonNull MaterialCardView topToolbar,
-      @NonNull TextView weatherDetails) {
+      @NonNull Button btnAngry, @NonNull Button btnAutumn, @NonNull Button btnBgCloudy,
+      @NonNull Button btnBgRainy, @NonNull Button btnBgSnowy, @NonNull Button btnBgSunny,
+      @NonNull Button btnCalm, @NonNull Button btnCloudy, @NonNull Button btnConfused,
+      @NonNull Button btnHappy, @NonNull Button btnRainy, @NonNull Button btnResetWeather,
+      @NonNull Button btnSad, @NonNull Button btnSnowy, @NonNull Button btnSpring,
+      @NonNull Button btnSummer, @NonNull Button btnSunny, @NonNull Button btnWinter,
+      @NonNull ImageView closeButton, @NonNull LinearLayout collapsedToolbar,
+      @NonNull LinearLayout expandedToolbar, @NonNull LinearLayout identitySelectionLayout,
+      @NonNull LinearLayout lemonButton, @NonNull ImageView smallFruit,
+      @NonNull ConstraintLayout stormBottleLayout, @NonNull LinearLayout tomatoButton,
+      @NonNull MaterialCardView topToolbar, @NonNull TextView weatherDetails) {
     this.rootView = rootView;
+    this.backgroundWeatherInfo = backgroundWeatherInfo;
     this.bigFruitBody = bigFruitBody;
     this.bigFruitExpression = bigFruitExpression;
     this.bottle = bottle;
@@ -131,6 +149,10 @@ public final class ActivityMainBinding implements ViewBinding {
     this.bottleContainer = bottleContainer;
     this.btnAngry = btnAngry;
     this.btnAutumn = btnAutumn;
+    this.btnBgCloudy = btnBgCloudy;
+    this.btnBgRainy = btnBgRainy;
+    this.btnBgSnowy = btnBgSnowy;
+    this.btnBgSunny = btnBgSunny;
     this.btnCalm = btnCalm;
     this.btnCloudy = btnCloudy;
     this.btnConfused = btnConfused;
@@ -182,6 +204,12 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.background_weather_info;
+      TextView backgroundWeatherInfo = ViewBindings.findChildViewById(rootView, id);
+      if (backgroundWeatherInfo == null) {
+        break missingId;
+      }
+
       id = R.id.big_fruit_body;
       ImageView bigFruitBody = ViewBindings.findChildViewById(rootView, id);
       if (bigFruitBody == null) {
@@ -221,6 +249,30 @@ public final class ActivityMainBinding implements ViewBinding {
       id = R.id.btn_autumn;
       Button btnAutumn = ViewBindings.findChildViewById(rootView, id);
       if (btnAutumn == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_bg_cloudy;
+      Button btnBgCloudy = ViewBindings.findChildViewById(rootView, id);
+      if (btnBgCloudy == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_bg_rainy;
+      Button btnBgRainy = ViewBindings.findChildViewById(rootView, id);
+      if (btnBgRainy == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_bg_snowy;
+      Button btnBgSnowy = ViewBindings.findChildViewById(rootView, id);
+      if (btnBgSnowy == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_bg_sunny;
+      Button btnBgSunny = ViewBindings.findChildViewById(rootView, id);
+      if (btnBgSunny == null) {
         break missingId;
       }
 
@@ -356,8 +408,9 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, bigFruitBody, bigFruitExpression,
-          bottle, bottleBottom, bottleContainer, btnAngry, btnAutumn, btnCalm, btnCloudy,
+      return new ActivityMainBinding((ConstraintLayout) rootView, backgroundWeatherInfo,
+          bigFruitBody, bigFruitExpression, bottle, bottleBottom, bottleContainer, btnAngry,
+          btnAutumn, btnBgCloudy, btnBgRainy, btnBgSnowy, btnBgSunny, btnCalm, btnCloudy,
           btnConfused, btnHappy, btnRainy, btnResetWeather, btnSad, btnSnowy, btnSpring, btnSummer,
           btnSunny, btnWinter, closeButton, collapsedToolbar, expandedToolbar,
           identitySelectionLayout, lemonButton, smallFruit, stormBottleLayout, tomatoButton,

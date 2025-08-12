@@ -2988,7 +2988,10 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
-drawable bg_storm_sky
+drawable bg_cloudy
+drawable bg_rainy
+drawable bg_snowy
+drawable bg_sunny
 drawable bottle_bottom_autumn
 drawable bottle_bottom_spring
 drawable bottle_bottom_summer
@@ -3221,6 +3224,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id background_weather_info
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3239,6 +3243,10 @@ id bounceEnd
 id bounceStart
 id btn_angry
 id btn_autumn
+id btn_bg_cloudy
+id btn_bg_rainy
+id btn_bg_snowy
+id btn_bg_sunny
 id btn_calm
 id btn_cloudy
 id btn_confused

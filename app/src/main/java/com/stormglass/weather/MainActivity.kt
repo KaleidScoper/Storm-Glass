@@ -17,6 +17,11 @@ class MainActivity : AppCompatActivity() {
     private var currentIdentity: String = "lemon" // 默认柠檬身份
     private var isUserSelectedWeather = false // 用户是否手动选择了天气
     private var userSelectedWeatherType = "sunny" // 用户选择的天气类型
+    
+    // 背景天气相关变量
+    private var backgroundWeatherCity = "武汉" // 背景天气城市
+    private var backgroundWeatherType = "sunny" // 背景天气类型
+    private var isUserSelectedBackgroundWeather = false // 用户是否手动选择了背景天气
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         setupWeatherButtons()
         setupSeasonButtons()
         setupExpressionButtons()
+        setupBackgroundWeatherButtons()
         
         // 开始表情动画
         startExpressionAnimation()
@@ -39,13 +45,17 @@ class MainActivity : AppCompatActivity() {
         binding.lemonButton.setOnClickListener {
             currentIdentity = "lemon"
             showStormBottle()
-            viewModel.fetchWeather("Wuhan") // 武汉天气
+            // 柠檬身份：获取武汉天气影响瓶子，获取合肥天气影响背景
+            fetchBottleWeather("武汉") // 瓶子天气
+            fetchBackgroundWeather("合肥") // 背景天气
         }
 
         binding.tomatoButton.setOnClickListener {
             currentIdentity = "tomato"
             showStormBottle()
-            viewModel.fetchWeather("Hefei") // 合肥天气
+            // 西红柿身份：获取合肥天气影响瓶子，获取武汉天气影响背景
+            fetchBottleWeather("合肥") // 瓶子天气
+            fetchBackgroundWeather("武汉") // 背景天气
         }
     }
 
@@ -88,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             resetToRealWeather()
         }
         
-        // 观察天气数据变化
+        // 观察瓶子天气数据变化
         viewModel.weatherData.observe(this) { weather ->
             weather?.let {
                 binding.weatherDetails.text = """
@@ -105,6 +115,16 @@ class MainActivity : AppCompatActivity() {
                     updateWeatherUI(it.weatherType)
                     // 同时更新季节
                     updateSeasonUI(it.season)
+                }
+            }
+        }
+
+        // 观察背景天气数据变化
+        viewModel.backgroundWeatherData.observe(this) { weather ->
+            weather?.let {
+                if (!isUserSelectedBackgroundWeather) {
+                    updateBackgroundWeather(it.weatherType)
+                    updateBackgroundWeatherInfo(backgroundWeatherCity, it.weatherType)
                 }
             }
         }
@@ -321,15 +341,85 @@ class MainActivity : AppCompatActivity() {
     private fun refreshWeatherData() {
         // 重置用户选择标志，允许API数据更新UI
         isUserSelectedWeather = false
+        isUserSelectedBackgroundWeather = false
         
         // 根据当前身份刷新天气数据
-        val city = if (currentIdentity == "lemon") "Wuhan" else "Hefei"
-        viewModel.fetchWeather(city)
+        val bottleCity = if (currentIdentity == "lemon") "武汉" else "合肥"
+        val backgroundCity = if (currentIdentity == "lemon") "合肥" else "武汉"
+        
+        fetchBottleWeather(bottleCity)
+        fetchBackgroundWeather(backgroundCity)
     }
 
     private fun resetToRealWeather() {
         // 重置用户选择，恢复真实天气显示
         isUserSelectedWeather = false
+        isUserSelectedBackgroundWeather = false
         refreshWeatherData()
+    }
+
+    // 背景天气相关方法
+    private fun setupBackgroundWeatherButtons() {
+        binding.btnBgSunny.setOnClickListener {
+            isUserSelectedBackgroundWeather = true
+            backgroundWeatherType = "sunny"
+            updateBackgroundWeather("sunny")
+        }
+        
+        binding.btnBgRainy.setOnClickListener {
+            isUserSelectedBackgroundWeather = true
+            backgroundWeatherType = "rainy"
+            updateBackgroundWeather("rainy")
+        }
+        
+        binding.btnBgCloudy.setOnClickListener {
+            isUserSelectedBackgroundWeather = true
+            backgroundWeatherType = "cloudy"
+            updateBackgroundWeather("cloudy")
+        }
+        
+        binding.btnBgSnowy.setOnClickListener {
+            isUserSelectedBackgroundWeather = true
+            backgroundWeatherType = "snowy"
+            updateBackgroundWeather("snowy")
+        }
+    }
+
+    private fun fetchBottleWeather(city: String) {
+        viewModel.fetchWeather(city)
+    }
+
+    private fun fetchBackgroundWeather(city: String) {
+        backgroundWeatherCity = city
+        isUserSelectedBackgroundWeather = false
+        viewModel.fetchBackgroundWeather(city)
+    }
+
+    private fun updateBackgroundWeather(weatherType: String) {
+        val backgroundRes = when (weatherType) {
+            "sunny" -> R.drawable.bg_sunny
+            "rainy" -> R.drawable.bg_rainy
+            "cloudy" -> R.drawable.bg_cloudy
+            "snowy" -> R.drawable.bg_snowy
+            else -> R.drawable.bg_sunny
+        }
+        
+        // 更新根布局的背景
+        binding.root.setBackgroundResource(backgroundRes)
+        
+        // 更新背景天气信息显示
+        updateBackgroundWeatherInfo(backgroundWeatherCity, weatherType)
+    }
+
+    private fun updateBackgroundWeatherInfo(city: String, weatherType: String) {
+        val weatherText = when (weatherType) {
+            "sunny" -> "晴天"
+            "rainy" -> "雨天"
+            "cloudy" -> "阴天"
+            "snowy" -> "雪天"
+            else -> "晴天"
+        }
+        
+        binding.backgroundWeatherInfo.text = "背景天气: $city - $weatherText"
     }
 }

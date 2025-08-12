@@ -19,6 +19,9 @@ class WeatherViewModel : ViewModel() {
     private val _weatherData = MutableLiveData<WeatherData?>()
     val weatherData: LiveData<WeatherData?> = _weatherData
     
+    private val _backgroundWeatherData = MutableLiveData<WeatherData?>()
+    val backgroundWeatherData: LiveData<WeatherData?> = _backgroundWeatherData
+    
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
     
@@ -48,13 +51,23 @@ class WeatherViewModel : ViewModel() {
     }
     
     fun fetchWeather(cityName: String) {
-        Log.d("WeatherViewModel", "Release版本测试 - 开始获取天气数据，城市: $cityName")
+        Log.d("WeatherViewModel", "开始获取瓶子天气数据，城市: $cityName")
+        fetchWeatherInternal(cityName, isBackground = false)
+    }
+    
+    fun fetchBackgroundWeather(cityName: String) {
+        Log.d("WeatherViewModel", "开始获取背景天气数据，城市: $cityName")
+        fetchWeatherInternal(cityName, isBackground = true)
+    }
+    
+    private fun fetchWeatherInternal(cityName: String, isBackground: Boolean) {
+        Log.d("WeatherViewModel", "开始获取天气数据，城市: $cityName, 背景: $isBackground")
         
         // 检查API密钥是否有效
         if (API_KEY == "YOUR_OPENWEATHER_API_KEY_HERE" || API_KEY.isEmpty()) {
             Log.d("WeatherViewModel", "API密钥未配置，使用模拟数据")
             _errorMessage.postValue("API密钥未配置，显示模拟数据")
-            useSimulatedWeatherData(cityName)
+            useSimulatedWeatherData(cityName, isBackground)
             return
         }
         
@@ -87,26 +100,31 @@ class WeatherViewModel : ViewModel() {
                 }
                 
                 if (response?.cod == 200) {
-                    Log.d("WeatherViewModel", "Release版本测试 - API响应成功: ${response.toString()}")
+                    Log.d("WeatherViewModel", "API响应成功: ${response.toString()}")
                     val weatherData = WeatherData.fromOpenWeatherResponse(response)
                     if (weatherData != null) {
-                        _weatherData.postValue(weatherData)
-                        Log.d("WeatherViewModel", "Release版本测试 - 天气数据获取成功: $weatherData")
+                        if (isBackground) {
+                            _backgroundWeatherData.postValue(weatherData)
+                            Log.d("WeatherViewModel", "背景天气数据获取成功: $weatherData")
+                        } else {
+                            _weatherData.postValue(weatherData)
+                            Log.d("WeatherViewModel", "瓶子天气数据获取成功: $weatherData")
+                        }
                     } else {
-                        Log.e("WeatherViewModel", "Release版本测试 - 无法解析天气数据")
+                        Log.e("WeatherViewModel", "无法解析天气数据")
                         _errorMessage.postValue("数据解析失败")
-                        useSimulatedWeatherData(cityName)
+                        useSimulatedWeatherData(cityName, isBackground)
                     }
                 } else {
                     Log.e("WeatherViewModel", "所有城市名称都失败，最后错误: $lastError")
                     _errorMessage.postValue("获取真实天气失败: $lastError，显示模拟数据")
-                    useSimulatedWeatherData(cityName)
+                    useSimulatedWeatherData(cityName, isBackground)
                 }
                 
             } catch (e: Exception) {
                 Log.e("WeatherViewModel", "网络请求失败", e)
                 _errorMessage.postValue("网络请求失败: ${e.message}，显示模拟数据")
-                useSimulatedWeatherData(cityName)
+                useSimulatedWeatherData(cityName, isBackground)
             } finally {
                 _isLoading.postValue(false)
             }
@@ -129,8 +147,8 @@ class WeatherViewModel : ViewModel() {
         }
     }
     
-    private fun useSimulatedWeatherData(cityName: String) {
-        Log.d("WeatherViewModel", "使用模拟天气数据")
+    private fun useSimulatedWeatherData(cityName: String, isBackground: Boolean = false) {
+        Log.d("WeatherViewModel", "使用模拟天气数据，背景: $isBackground")
         
         val simulatedWeather = WeatherData(
             temperature = 22.0,
@@ -143,7 +161,11 @@ class WeatherViewModel : ViewModel() {
             reportTime = "模拟数据"
         )
         
-        _weatherData.postValue(simulatedWeather)
+        if (isBackground) {
+            _backgroundWeatherData.postValue(simulatedWeather)
+        } else {
+            _weatherData.postValue(simulatedWeather)
+        }
     }
     
     private fun getCurrentSeason(): String {
