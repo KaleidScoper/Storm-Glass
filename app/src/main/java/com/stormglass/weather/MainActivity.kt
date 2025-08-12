@@ -39,13 +39,13 @@ class MainActivity : AppCompatActivity() {
         binding.lemonButton.setOnClickListener {
             currentIdentity = "lemon"
             showStormBottle()
-            viewModel.fetchWeather("武汉") // 武汉天气
+            viewModel.fetchWeather("Wuhan") // 武汉天气
         }
 
         binding.tomatoButton.setOnClickListener {
             currentIdentity = "tomato"
             showStormBottle()
-            viewModel.fetchWeather("合肥") // 合肥天气
+            viewModel.fetchWeather("Hefei") // 合肥天气
         }
     }
 
@@ -323,7 +323,7 @@ class MainActivity : AppCompatActivity() {
         isUserSelectedWeather = false
         
         // 根据当前身份刷新天气数据
-        val city = if (currentIdentity == "lemon") "wuhan" else "hefei"
+        val city = if (currentIdentity == "lemon") "Wuhan" else "Hefei"
         viewModel.fetchWeather(city)
     }
 

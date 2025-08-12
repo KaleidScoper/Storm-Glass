@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.stormglass.weather.api.WeatherApiService
+import com.stormglass.weather.api.OpenWeatherResponse
 import com.stormglass.weather.model.WeatherData
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
@@ -25,6 +26,7 @@ class WeatherViewModel : ViewModel() {
     val errorMessage: LiveData<String> = _errorMessage
     
     // OpenWeatherMap API密钥 - 请替换为您的实际API密钥
+    // 注意：这个密钥可能已过期，请到 https://openweathermap.org/api 注册获取新的API密钥
     private val API_KEY = "0b88a198e71f4de0383e21afe6312d1e"
     
     private val weatherApiService: WeatherApiService by lazy {
@@ -46,8 +48,10 @@ class WeatherViewModel : ViewModel() {
     }
     
     fun fetchWeather(cityName: String) {
-        if (API_KEY == "YOUR_OPENWEATHER_API_KEY_HERE") {
+        // 检查API密钥是否有效
+        if (API_KEY == "YOUR_OPENWEATHER_API_KEY_HERE" || API_KEY.isEmpty()) {
             Log.d("WeatherViewModel", "API密钥未配置，使用模拟数据")
+            _errorMessage.postValue("API密钥未配置，显示模拟数据")
             useSimulatedWeatherData(cityName)
             return
         }
@@ -57,16 +61,33 @@ class WeatherViewModel : ViewModel() {
                 _isLoading.postValue(true)
                 _errorMessage.postValue("")
                 
-                Log.d("WeatherViewModel", "开始获取天气数据，城市: $cityName")
+                // 尝试多种城市名称格式
+                val cityNames = listOf(cityName, getChineseCityName(cityName), getEnglishCityName(cityName))
+                var response: OpenWeatherResponse? = null
+                var lastError: String = ""
                 
-                val response = weatherApiService.getCurrentWeather(cityName, API_KEY)
+                for (city in cityNames) {
+                    try {
+                        Log.d("WeatherViewModel", "尝试获取天气数据，城市: $city")
+                        response = weatherApiService.getCurrentWeather(city, API_KEY)
+                        
+                        if (response.cod == 200) {
+                            Log.d("WeatherViewModel", "成功获取天气数据，城市: $city")
+                            break
+                        } else {
+                            lastError = "API错误: ${response.cod}"
+                            Log.e("WeatherViewModel", "API返回错误: ${response.cod} for city: $city")
+                        }
+                    } catch (e: Exception) {
+                        lastError = "网络请求失败: ${e.message}"
+                        Log.e("WeatherViewModel", "网络请求失败 for city: $city", e)
+                    }
+                }
                 
-                Log.d("WeatherViewModel", "API响应: $response")
-                
-                if (response.cod == 200) {
+                if (response?.cod == 200) {
                     val weatherData = WeatherData.fromOpenWeatherResponse(response)
                     if (weatherData != null) {
-                        _weatherData.postValue(weatherData!!) // Applied fix here
+                        _weatherData.postValue(weatherData)
                         Log.d("WeatherViewModel", "天气数据获取成功: $weatherData")
                     } else {
                         Log.e("WeatherViewModel", "无法解析天气数据")
@@ -74,18 +95,34 @@ class WeatherViewModel : ViewModel() {
                         useSimulatedWeatherData(cityName)
                     }
                 } else {
-                    Log.e("WeatherViewModel", "API返回错误: ${response.cod}")
-                    _errorMessage.postValue("API错误: ${response.cod}")
+                    Log.e("WeatherViewModel", "所有城市名称都失败，最后错误: $lastError")
+                    _errorMessage.postValue("获取真实天气失败: $lastError，显示模拟数据")
                     useSimulatedWeatherData(cityName)
                 }
                 
             } catch (e: Exception) {
                 Log.e("WeatherViewModel", "网络请求失败", e)
-                _errorMessage.postValue("网络请求失败: ${e.message}")
+                _errorMessage.postValue("网络请求失败: ${e.message}，显示模拟数据")
                 useSimulatedWeatherData(cityName)
             } finally {
                 _isLoading.postValue(false)
             }
+        }
+    }
+    
+    private fun getChineseCityName(englishName: String): String {
+        return when (englishName.lowercase()) {
+            "wuhan" -> "武汉"
+            "hefei" -> "合肥"
+            else -> englishName
+        }
+    }
+    
+    private fun getEnglishCityName(chineseName: String): String {
+        return when (chineseName) {
+            "武汉" -> "Wuhan"
+            "合肥" -> "Hefei"
+            else -> chineseName
         }
     }
     
