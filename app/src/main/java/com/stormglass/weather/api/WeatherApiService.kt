@@ -1,54 +1,70 @@
 package com.stormglass.weather.api
 
-import com.stormglass.weather.model.WeatherData
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+// OpenWeatherMap API接口
 interface WeatherApiService {
-    
-    @GET("v7/weather/now")
+    @GET("weather")
     suspend fun getCurrentWeather(
-        @Query("location") location: String,
-        @Query("key") apiKey: String = "27ca5c2719a243148a7318f89455baa2"
-    ): WeatherApiResponse
+        @Query("q") cityName: String,
+        @Query("appid") apiKey: String,
+        @Query("units") units: String = "metric",
+        @Query("lang") lang: String = "zh_cn"
+    ): OpenWeatherResponse
 }
 
-data class WeatherApiResponse(
-    val code: String,
-    val now: WeatherNow,
-    val location: List<Location>
+// OpenWeatherMap响应数据
+data class OpenWeatherResponse(
+    val coord: Coord?,
+    val weather: List<Weather>?,
+    val base: String?,
+    val main: Main?,
+    val visibility: Int?,
+    val wind: Wind?,
+    val clouds: Clouds?,
+    val dt: Long?,
+    val sys: Sys?,
+    val timezone: Int?,
+    val id: Int?,
+    val name: String?,
+    val cod: Int?
 )
 
-data class WeatherNow(
-    val obsTime: String,
-    val temp: String,
-    val feelsLike: String,
-    val icon: String,
-    val text: String,
-    val wind360: String,
-    val windDir: String,
-    val windScale: String,
-    val windSpeed: String,
-    val humidity: String,
-    val precip: String,
-    val pressure: String,
-    val vis: String,
-    val cloud: String,
-    val dew: String
+data class Coord(
+    val lon: Double?,
+    val lat: Double?
 )
 
-data class Location(
-    val name: String,
-    val id: String,
-    val lat: String,
-    val lon: String,
-    val adm2: String,
-    val adm1: String,
-    val country: String,
-    val tz: String,
-    val utcOffset: String,
-    val isDst: String,
-    val type: String,
-    val rank: String,
-    val fxLink: String
+data class Weather(
+    val id: Int?,
+    val main: String?,
+    val description: String?,
+    val icon: String?
+)
+
+data class Main(
+    val temp: Double?,
+    val feels_like: Double?,
+    val temp_min: Double?,
+    val temp_max: Double?,
+    val pressure: Int?,
+    val humidity: Int?
+)
+
+data class Wind(
+    val speed: Double?,
+    val deg: Int?
+)
+
+data class Clouds(
+    val all: Int?
+)
+
+data class Sys(
+    val type: Int?,
+    val id: Int?,
+    val country: String?,
+    val sunrise: Long?,
+    val sunset: Long?
 )

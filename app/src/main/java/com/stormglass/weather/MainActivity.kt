@@ -39,13 +39,13 @@ class MainActivity : AppCompatActivity() {
         binding.lemonButton.setOnClickListener {
             currentIdentity = "lemon"
             showStormBottle()
-            viewModel.fetchWeather("wuhan") // 武汉洪山区天气
+            viewModel.fetchWeather("武汉") // 武汉天气
         }
 
         binding.tomatoButton.setOnClickListener {
             currentIdentity = "tomato"
             showStormBottle()
-            viewModel.fetchWeather("hefei") // 合肥蜀山区天气
+            viewModel.fetchWeather("合肥") // 合肥天气
         }
     }
 
@@ -92,15 +92,19 @@ class MainActivity : AppCompatActivity() {
         viewModel.weatherData.observe(this) { weather ->
             weather?.let {
                 binding.weatherDetails.text = """
+                    城市: ${it.city}
                     温度: ${it.temperature}°C
                     湿度: ${it.humidity}%
                     风速: ${it.windSpeed} m/s
                     天气: ${it.description}
+                    报告时间: ${it.reportTime}
                 """.trimIndent()
                 
                 // 只有在用户没有手动选择天气时才更新UI
                 if (!isUserSelectedWeather) {
                     updateWeatherUI(it.weatherType)
+                    // 同时更新季节
+                    updateSeasonUI(it.season)
                 }
             }
         }
@@ -237,7 +241,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateSeasonUI(season: String) {
-        // 更新瓶底（季节）
+        // 更新瓶底背景
         val bottleBottomRes = when (season) {
             "spring" -> R.drawable.bottle_bottom_spring
             "summer" -> R.drawable.bottle_bottom_summer
