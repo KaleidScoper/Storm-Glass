@@ -2084,6 +2084,9 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color purple_200
+color purple_500
+color purple_700
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -2097,10 +2100,17 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color teal_200
+color teal_700
 color tooltip_background_dark
 color tooltip_background_light
 color transparent
 color white
+color white_20
+color white_40
+color white_60
+color white_80
+color white_90
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -2995,6 +3005,10 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_emotion
+drawable button_function
+drawable button_glass
+drawable close_button_background
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -3002,6 +3016,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable fruit_arm
 drawable fruit_leg
+drawable glass_background
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3011,6 +3026,7 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_close
 drawable ic_keyboard_black_24dp
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
@@ -3217,7 +3233,6 @@ id bottle
 id bottle_bottom
 id bottle_container
 id bottom
-id bottom_toolbar
 id bounce
 id bounceBoth
 id bounceEnd
@@ -3229,6 +3244,7 @@ id btn_cloudy
 id btn_confused
 id btn_happy
 id btn_rainy
+id btn_reset_weather
 id btn_sad
 id btn_snowy
 id btn_spring
@@ -3256,6 +3272,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id close_button
 id closest
 id collapseActionView
 id collapsed_toolbar
@@ -3634,7 +3651,6 @@ id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
 id weather_details
-id weather_info_text
 id west
 id withText
 id with_icon

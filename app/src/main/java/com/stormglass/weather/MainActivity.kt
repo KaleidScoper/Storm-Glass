@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: WeatherViewModel
     private var currentIdentity: String = "lemon" // 默认柠檬身份
+    private var isUserSelectedWeather = false // 用户是否手动选择了天气
+    private var userSelectedWeatherType = "sunny" // 用户选择的天气类型
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +50,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showStormBottle() {
+        // 隐藏身份选择界面
         binding.identitySelectionLayout.visibility = View.GONE
+        
+        // 显示风暴瓶界面
         binding.stormBottleLayout.visibility = View.VISIBLE
         
         // 根据身份更新UI
@@ -78,6 +83,11 @@ class MainActivity : AppCompatActivity() {
         // 设置折叠/展开功能栏的点击事件
         setupCollapsibleToolbar()
         
+        // 设置恢复真实天气按钮
+        binding.btnResetWeather.setOnClickListener {
+            resetToRealWeather()
+        }
+        
         // 观察天气数据变化
         viewModel.weatherData.observe(this) { weather ->
             weather?.let {
@@ -88,8 +98,28 @@ class MainActivity : AppCompatActivity() {
                     天气: ${it.description}
                 """.trimIndent()
                 
-                // 根据天气更新瓶子和小水果
-                updateWeatherUI(it.weatherType)
+                // 只有在用户没有手动选择天气时才更新UI
+                if (!isUserSelectedWeather) {
+                    updateWeatherUI(it.weatherType)
+                }
+            }
+        }
+
+        // 观察加载状态
+        viewModel.isLoading.observe(this) { isLoading ->
+            if (isLoading) {
+                binding.weatherDetails.text = "正在获取天气数据..."
+            }
+        }
+
+        // 观察错误信息
+        viewModel.errorMessage.observe(this) { errorMessage ->
+            if (errorMessage.isNotEmpty()) {
+                binding.weatherDetails.text = """
+                    ${binding.weatherDetails.text}
+                    
+                    注意: $errorMessage
+                """.trimIndent()
             }
         }
     }
@@ -98,33 +128,25 @@ class MainActivity : AppCompatActivity() {
         var isExpanded = false
         
         binding.collapsedToolbar.setOnClickListener {
-            if (isExpanded) {
-                // 收起功能栏
-                binding.expandedToolbar.visibility = View.GONE
-                binding.collapsedToolbar.visibility = View.VISIBLE
-                isExpanded = false
-            } else {
+            if (!isExpanded) {
                 // 展开功能栏
                 binding.expandedToolbar.visibility = View.VISIBLE
                 binding.collapsedToolbar.visibility = View.GONE
                 isExpanded = true
             }
         }
+
+        // 添加关闭按钮的点击事件
+        binding.closeButton.setOnClickListener {
+            // 收起功能栏
+            binding.expandedToolbar.visibility = View.GONE
+            binding.collapsedToolbar.visibility = View.VISIBLE
+            isExpanded = false
+        }
     }
 
     private fun updateWeatherUI(weatherType: String) {
-        val season = getCurrentSeason()
-        
-        // 更新瓶底（季节）
-        val bottleBottomRes = when (season) {
-            "spring" -> R.drawable.bottle_bottom_spring
-            "summer" -> R.drawable.bottle_bottom_summer
-            "autumn" -> R.drawable.bottle_bottom_autumn
-            "winter" -> R.drawable.bottle_bottom_winter
-            else -> R.drawable.bottle_bottom_spring
-        }
-        binding.bottleBottom.setImageResource(bottleBottomRes)
-        
+        // 只更新天气相关的内容，不修改季节
         // 更新小水果
         val smallFruitRes = if (currentIdentity == "lemon") {
             when (weatherType) {
@@ -168,19 +190,31 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupWeatherButtons() {
         binding.btnSunny.setOnClickListener {
+            isUserSelectedWeather = true
+            userSelectedWeatherType = "sunny"
             updateWeatherUI("sunny")
+            // 不立即刷新真实天气数据，保持用户选择
         }
         
         binding.btnRainy.setOnClickListener {
+            isUserSelectedWeather = true
+            userSelectedWeatherType = "rainy"
             updateWeatherUI("rainy")
+            // 不立即刷新真实天气数据，保持用户选择
         }
         
         binding.btnCloudy.setOnClickListener {
+            isUserSelectedWeather = true
+            userSelectedWeatherType = "cloudy"
             updateWeatherUI("cloudy")
+            // 不立即刷新真实天气数据，保持用户选择
         }
         
         binding.btnSnowy.setOnClickListener {
+            isUserSelectedWeather = true
+            userSelectedWeatherType = "snowy"
             updateWeatherUI("snowy")
+            // 不立即刷新真实天气数据，保持用户选择
         }
     }
 
@@ -278,5 +312,20 @@ class MainActivity : AppCompatActivity() {
         animatorY.repeatMode = ValueAnimator.REVERSE
         animatorY.interpolator = LinearInterpolator()
         animatorY.start()
+    }
+
+    private fun refreshWeatherData() {
+        // 重置用户选择标志，允许API数据更新UI
+        isUserSelectedWeather = false
+        
+        // 根据当前身份刷新天气数据
+        val city = if (currentIdentity == "lemon") "wuhan" else "hefei"
+        viewModel.fetchWeather(city)
+    }
+
+    private fun resetToRealWeather() {
+        // 重置用户选择，恢复真实天气显示
+        isUserSelectedWeather = false
+        refreshWeatherData()
     }
 }

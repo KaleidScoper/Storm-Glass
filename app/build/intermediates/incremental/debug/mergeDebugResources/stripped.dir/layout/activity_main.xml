@@ -113,7 +113,8 @@
                 android:gravity="center"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:visibility="visible">
 
                 <View
                     android:layout_width="20dp"
@@ -134,184 +135,305 @@
 
             </LinearLayout>
 
-            <!-- 展开状态的功能栏 -->
+            <!-- 展开状态的功能栏 - 毛玻璃效果设计 -->
             <LinearLayout
                 android:id="@+id/expanded_toolbar"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@drawable/glass_background"
                 android:padding="16dp"
+                android:layout_margin="16dp"
                 android:visibility="gone">
 
-                <TextView
-                    android:id="@+id/weather_info_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/weather_info"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="8dp" />
-
-                <TextView
-                    android:id="@+id/weather_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="12sp"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="12dp" />
-
-                <!-- 表情选择 -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/expression"
-                    android:textSize="12sp"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="6dp" />
-
+                <!-- 顶部标题栏 -->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="12dp">
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="20dp">
 
-                    <Button
-                        android:id="@+id/btn_happy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/happy"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
+                                         <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_weight="1"
+                         android:text="控制面板"
+                         android:textSize="20sp"
+                         android:textColor="@color/black"
+                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/btn_sad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/sad"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
-
-                    <Button
-                        android:id="@+id/btn_calm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/calm"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
-
-                    <Button
-                        android:id="@+id/btn_angry"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/angry"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
-
-                    <Button
-                        android:id="@+id/btn_confused"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/confused"
-                        android:textSize="10sp" />
-
+                     <!-- 关闭按钮 -->
+                     <ImageView
+                         android:id="@+id/close_button"
+                         android:layout_width="28dp"
+                         android:layout_height="28dp"
+                         android:background="@drawable/close_button_background"
+                         android:clickable="true"
+                         android:focusable="true"
+                         android:src="@drawable/ic_close"
+                         android:padding="6dp"
+                         android:scaleType="fitCenter" />
                 </LinearLayout>
 
-                <!-- 测试天气按钮 -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/test_weather"
-                    android:textSize="12sp"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="6dp" />
-
+                <!-- 功能区域 -->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="12dp">
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btn_sunny"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/sunny"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
+                                         <!-- 天气信息卡片 -->
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="vertical"
+                         android:background="@drawable/button_glass"
+                         android:padding="14dp"
+                         android:layout_marginBottom="14dp">
 
-                    <Button
-                        android:id="@+id/btn_rainy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/rainy"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
+                                                 <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="🌤️ 天气信息"
+                             android:textSize="16sp"
+                             android:textColor="@color/black"
+                             android:textStyle="bold"
+                             android:layout_marginBottom="12dp" />
 
-                    <Button
-                        android:id="@+id/btn_cloudy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/cloudy"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
+                                                 <TextView
+                             android:id="@+id/weather_details"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:text=""
+                             android:textSize="14sp"
+                             android:textColor="@color/black" />
 
-                    <Button
-                        android:id="@+id/btn_snowy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/snowy"
-                        android:textSize="10sp" />
+                        <Button
+                            android:id="@+id/btn_reset_weather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="恢复真实天气"
+                            android:textSize="12sp"
+                            android:background="@drawable/button_function"
+                            android:textColor="@color/white"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
 
+                                         <!-- 表情控制卡片 -->
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="vertical"
+                         android:background="@drawable/button_glass"
+                         android:padding="14dp"
+                         android:layout_marginBottom="14dp">
+
+                                                 <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="😊 表情控制"
+                             android:textSize="16sp"
+                             android:textColor="@color/black"
+                             android:textStyle="bold"
+                             android:layout_marginBottom="12dp" />
+
+                        <!-- 表情按钮网格 -->
+                        <GridLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:columnCount="3"
+                            android:rowCount="2"
+                            android:alignmentMode="alignMargins"
+                            android:useDefaultMargins="true">
+
+                            <Button
+                                android:id="@+id/btn_happy"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_columnWeight="1"
+                                android:text="😊"
+                                android:textSize="16sp"
+                                android:background="@drawable/button_emotion"
+                                android:textColor="@color/white" />
+
+                            <Button
+                                android:id="@+id/btn_sad"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_columnWeight="1"
+                                android:text="😢"
+                                android:textSize="16sp"
+                                android:background="@drawable/button_emotion"
+                                android:textColor="@color/white" />
+
+                            <Button
+                                android:id="@+id/btn_calm"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_columnWeight="1"
+                                android:text="😐"
+                                android:textSize="16sp"
+                                android:background="@drawable/button_emotion"
+                                android:textColor="@color/white" />
+
+                            <Button
+                                android:id="@+id/btn_angry"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_columnWeight="1"
+                                android:text="😠"
+                                android:textSize="16sp"
+                                android:background="@drawable/button_emotion"
+                                android:textColor="@color/white" />
+
+                            <Button
+                                android:id="@+id/btn_confused"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_columnWeight="1"
+                                android:text="😕"
+                                android:textSize="16sp"
+                                android:background="@drawable/button_emotion"
+                                android:textColor="@color/white" />
+                        </GridLayout>
+                    </LinearLayout>
+
+                                         <!-- 天气测试卡片 -->
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="vertical"
+                         android:background="@drawable/button_glass"
+                         android:padding="14dp"
+                         android:layout_marginBottom="14dp">
+
+                                                 <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="🌦️ 天气测试"
+                             android:textSize="16sp"
+                             android:textColor="@color/black"
+                             android:textStyle="bold"
+                             android:layout_marginBottom="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="8dp">
+
+                            <Button
+                                android:id="@+id/btn_sunny"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:text="☀️"
+                                android:textSize="14sp"
+                                android:background="@drawable/button_function"
+                                android:textColor="@color/white"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_rainy"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:text="🌧️"
+                                android:textSize="14sp"
+                                android:background="@drawable/button_function"
+                                android:textColor="@color/white"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_cloudy"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:text="☁️"
+                                android:textSize="14sp"
+                                android:background="@drawable/button_function"
+                                android:textColor="@color/white"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_snowy"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:text="❄️"
+                                android:textSize="14sp"
+                                android:background="@drawable/button_function"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                                         <!-- 季节测试卡片 -->
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="vertical"
+                         android:background="@drawable/button_glass"
+                         android:padding="14dp">
+
+                                                 <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="🍃 季节测试"
+                             android:layout_marginBottom="12dp"
+                             android:textColor="@color/black"
+                             android:textSize="16sp"
+                             android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btn_spring"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:text="🌸"
+                                android:textSize="14sp"
+                                android:background="@drawable/button_function"
+                                android:textColor="@color/white"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_summer"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:text="🌻"
+                                android:textSize="14sp"
+                                android:background="@drawable/button_function"
+                                android:textColor="@color/white"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_autumn"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:text="🍂"
+                                android:textSize="14sp"
+                                android:background="@drawable/button_function"
+                                android:textColor="@color/white"
+                                android:layout_marginEnd="4dp" />
+
+                            <Button
+                                android:id="@+id/btn_winter"
+                                android:layout_width="0dp"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:text="❄️"
+                                android:textSize="14sp"
+                                android:background="@drawable/button_function"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
-
-                <!-- 测试季节按钮 -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/test_season"
-                    android:textSize="12sp"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="6dp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_spring"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/spring"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
-
-                    <Button
-                        android:id="@+id/btn_summer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/summer"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
-
-                    <Button
-                        android:id="@+id/btn_autumn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/autumn"
-                        android:textSize="10sp"
-                        android:layout_marginEnd="6dp" />
-
-                    <Button
-                        android:id="@+id/btn_winter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="@string/winter"
-                        android:textSize="10sp" />
-
-                </LinearLayout>
-
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -322,10 +444,9 @@
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:layout_marginTop="80dp"
-            android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bottom_toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <!-- 瓶底 (最底层，与瓶子大小一致) -->
@@ -390,19 +511,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- 底部工具栏 -->
-        <LinearLayout
-            android:id="@+id/bottom_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/semi_transparent_toolbar_bg"
-            android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent">
 
-            <!-- 这里可以添加其他底部功能，目前为空 -->
-
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

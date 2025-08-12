@@ -1,11 +1,7 @@
 [
     {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_expression_angry.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_expression_angry.png"
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_close_button_background.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\close_button_background.xml"
     },
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_tomato_cloudy.png.flat",
@@ -14,18 +10,6 @@
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_bottom_autumn.png.flat",
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_bottom_autumn.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_tomato_snowy.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\small_tomato_snowy.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_body.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_body.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\xml\\data_extraction_rules.xml"
     },
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_expression_confused.png.flat",
@@ -40,12 +24,8 @@
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\fruit_arm.png"
     },
     {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_snowy.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_snowy.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_expression_sad.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_expression_sad.png"
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_ic_close.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\ic_close.xml"
     },
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_tomato_sunny.png.flat",
@@ -60,16 +40,16 @@
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\tomato_expression_confused.png"
     },
     {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_expression_happy.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_expression_happy.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_identity_button_background.xml.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\identity_button_background.xml"
-    },
-    {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_sunny.png.flat",
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_sunny.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_button_emotion.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\button_emotion.xml"
+    },
+    {
+        "merged": "com.stormglass.weather.app-merged_res-35:/drawable_button_function.xml.flat",
+        "source": "com.stormglass.weather.app-main-37:/drawable/button_function.xml"
     },
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_lemon_cloudy.png.flat",
@@ -84,64 +64,24 @@
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bg_storm_sky.png"
     },
     {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_bottom_winter.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_bottom_winter.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato_expression_happy.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\tomato_expression_happy.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_cloudy.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_cloudy.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\mipmap-hdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato_expression_sad.png.flat",
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\tomato_expression_sad.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\tomato.png"
     },
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_lemon_rainy.png.flat",
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\small_lemon_rainy.png"
     },
     {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_lemon_snowy.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\small_lemon_snowy.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon.png"
-    },
-    {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_expression_calm.png.flat",
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_expression_calm.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\xml\\backup_rules.xml"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato_expression_calm.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\tomato_expression_calm.png"
     },
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_bottom_spring.png.flat",
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_bottom_spring.png"
     },
     {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_bottom_summer.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_bottom_summer.png"
-    },
-    {
-        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_tomato_rainy.png.flat",
-        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\small_tomato_rainy.png"
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_button_glass.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\button_glass.xml"
     },
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato_body.png.flat",
@@ -154,6 +94,106 @@
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_lemon_sunny.png.flat",
         "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\small_lemon_sunny.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_expression_angry.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_expression_angry.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_tomato_snowy.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\small_tomato_snowy.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_body.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_body.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.stormglass.weather.app-merged_res-35:/drawable_button_glass.xml.flat",
+        "source": "com.stormglass.weather.app-main-37:/drawable/button_glass.xml"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_snowy.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_snowy.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_expression_sad.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_expression_sad.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon_expression_happy.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon_expression_happy.png"
+    },
+    {
+        "merged": "com.stormglass.weather.app-merged_res-35:/drawable_glass_background.xml.flat",
+        "source": "com.stormglass.weather.app-main-37:/drawable/glass_background.xml"
+    },
+    {
+        "merged": "com.stormglass.weather.app-merged_res-35:/drawable_button_emotion.xml.flat",
+        "source": "com.stormglass.weather.app-main-37:/drawable/button_emotion.xml"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_identity_button_background.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\identity_button_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_bottom_winter.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_bottom_winter.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato_expression_happy.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\tomato_expression_happy.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_cloudy.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_cloudy.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\tomato.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_glass_background.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\glass_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_lemon_snowy.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\small_lemon_snowy.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_lemon.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\lemon.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato_expression_calm.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\tomato_expression_calm.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_bottle_bottom_summer.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\bottle_bottom_summer.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_small_tomato_rainy.png.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\small_tomato_rainy.png"
+    },
+    {
+        "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_button_function.xml.flat",
+        "source": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-main-37:\\drawable\\button_function.xml"
     },
     {
         "merged": "C:\\Users\\kalei\\.gradle\\daemon\\8.2\\com.stormglass.weather.app-merged_res-35:\\drawable_tomato_expression_angry.png.flat",
